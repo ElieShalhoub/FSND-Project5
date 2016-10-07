@@ -76,14 +76,39 @@ Configuration Changes
 	CREATE DATABASE catalog;
 	\q
 
-11) 
+11) Protect .git directory
+	sudo chmod 700 /var/www/FlaskApp/FlaskApp/.git
 
+12) Create a wsgi file entry point to work with mod_wsgi
+	sudo vi /etc/apache2/sites-available/FlaskApp.conf
 
+	<VirtualHost *:80>
+                ServerName http://ec2-52-36-190-19.us-west-2.compute.amazonaws.com
+                ServerAdmin admin@mywebsite.com
+                WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+                <Directory /var/www/FlaskApp/FlaskApp/>
+                        Order allow,deny
+                        Allow from all
+                </Directory>
+                Alias /static /var/www/FlaskApp/FlaskApp/static
+                <Directory /var/www/FlaskApp/FlaskApp/static/>
+                        Order allow,deny
+                        Allow from all
+                </Directory>
+                ErrorLog /var/www/FlaskApp/error.log
+                LogLevel warn
+                CustomLog /var/www/FlaskApp/access.log combined
+	</VirtualHost>
 
-
-		
 	
+13) Update Database connection string in database_setup.py to the use PostgreSQL rather than SQLite3
+	sudo vi /var/www/FlaskApp/FlaskApp/database_setup.py
 
+	then update the database connection string to: postgresql://catalog:catalog@localhost/catalog
+
+14) Restart Apache2:
+	sudo service apache2 restart
+	
 Creator:
 
 Elie Shalhoub
