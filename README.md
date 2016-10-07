@@ -109,6 +109,9 @@ Configuration Changes
 14) Restart Apache2:
 	sudo service apache2 restart
 	
+15) Grader user password is:
+	ud@city2012!
+
 Creator:
 
 Elie Shalhoub
