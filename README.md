@@ -10,7 +10,7 @@ Server Details
 
 Server IP Address: 52.43.214.209
 Server SSH Port: 2200
-Application URL: http://ec2-52-43-214-209.us-west-2.compute.amazonaws.com/catalog/
+Application URL: http://ec2-52-43-214-209.us-west-2.compute.amazonaws.com
 
 Software Installed
 1) Apache2
