@@ -8,9 +8,9 @@ Now the application is  accessible to the public!
 
 Server Details
 
-Server IP Address: 52.36.190.19
+Server IP Address: 52.43.214.209
 Server SSH Port: 2200
-Application URL: http://ec2-52-36-190-19.us-west-2.compute.amazonaws.com/
+Application URL: http://ec2-52-43-214-209.us-west-2.compute.amazonaws.com/catalog/
 
 Software Installed
 1) Apache2
@@ -38,7 +38,7 @@ Configuration Changes
 	Create the file: grader under /etc/sudoers.d/ through "vi /etc/sudoers.d/grader", that contains the following content 
 
 	# CLOUD_IMG: This file was created/modified by the Cloud Image build process
-	grader ALL=(ALL) NOPASSWD:ALL
+	grader ALL=(ALL) PASSWD:ALL
 
 4) Configure the local timezone to UTC.
 	sudo dpkg-reconfigure tzdata
@@ -46,7 +46,7 @@ Configuration Changes
 5) Change the SSH port from 22 to 2200
 	sudo vi /etc/ssh/sshd_config
 	
-	Thwn change the Port from 22 to 2200
+	Then change the Port from 22 to 2200
 
 6) Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123)
 	sudo ufw allow 2200/tcp
